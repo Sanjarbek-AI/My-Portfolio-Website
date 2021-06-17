@@ -1,0 +1,182 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="main-wrapper">
+        <section class="blog-details space--md space-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-8 mx-auto">
+                        <div class="content">
+                            <article class="article-body">
+                                <h4 class="mb-5">{{ object.title }}
+                                </h4>
+                                <ul class="article__meta">
+                                    <li>
+                                        <h6 class="font-size-12"><span
+                                                class="bullet">•</span>{{ object.created_at|date:'d m, Y' }}</h6>
+                                    </li>
+                                    <li>
+                                        <h6 class="font-size-12 meta-title">TAGS:</h6>
+                                        <h6 class="font-size-12">
+                                            <a href="#">TREND</a>
+                                            <a href="#">DESIGN</a>
+                                            <a href="#">AUDIO</a>
+                                        </h6>
+                                    </li>
+                                </ul>
+                                <a href="#" class="article__thumb"><img src="{{ object.image.url }}"
+                                                                        alt="article__thumb"></a>
+                                <ul class="article__meta mb-4 mt-2">
+                                    <li><img class="avatar" src="{% static 'img/blog-avatar.png' %}" alt="avatar">
+                                        <h6 class="font-size-12">By: {{ object.author.name }}</h6>
+                                    </li>
+                                    <li>
+                                        <h6 class="font-size-12">25 Comments</h6>
+                                    </li>
+                                    <li>
+                                        <h6 class="font-size-12">1.5k Likes</h6>
+                                    </li>
+                                </ul>
+                                <div class="post-content">
+                                    <p>{{ object.long_description|safe }}</p>
+
+                                    <blockquote>
+                                        <p>Excepteur sint occaecat cupidatat non proident, sunt culpa quite deserunt
+                                            enal
+                                            mollit anim id estambul ilaborum. Sed ultra practice omnis iste natus error
+                                            unexpected site</p>
+                                    </blockquote>
+                                    <figure>
+                                        {% for image in object.images.all %}
+                                            <span>
+                                                <img src="{{ image.image.url }}" alt="image">
+                                            </span>
+                                        {% endfor %}
+                                    </figure>
+
+                                    <ul>
+                                        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sedo eiusmod
+                                            tempor
+                                        </li>
+                                        <li>Amet, consectetur adipisicing elit, sedo eiusmod tempor</li>
+                                        <li> Ipsum dolor sit amet, consectetur adipisicing sedo eiusmod</li>
+                                        <li> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sedo eiusmod
+                                            tempor
+                                        </li>
+                                        <li> Amet, consectetur adipisicing elit, sedo eiusmod tempor</li>
+                                    </ul>
+                                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea all commodalo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                        velit esse caerer illum dolore eu fugiat nulla quis
+                                        nostrud exercitation ullamco </p>
+                                </div>
+
+                                <div class="article__share d-flex align-items-center">
+                                    <span>Share</span>
+                                    <ul class="social-connet">
+                                        <li><a href="#"><i class="ft ft-facebook"></i></a></li>
+                                        <li><a href="#"><i class="ft ft-twitter"></i></a></li>
+                                        <li><a href="#"><i class="ft ft-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="ft ft-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </article>
+                        </div>
+                        <nav>
+                            <ul class="pagination d-flex justify-content-between mb-0 flex-wrap">
+                                {% if object.get_prev %}
+                                    <li class="pagination-item mb-2 mb-2">
+                                        <a class="btn btn--primary"
+                                           href="{% url 'blog:detail' pk=object.get_prev.pk %}">
+                                            <span class="btn__text btn__text--prev">Prev posts</span>
+                                            <span class="btn__arrow btn__arrow--prev"></span></a>
+                                    </li>
+                                {% endif %}
+                                {% if object.get_next %}
+                                    <li class="pagination-item mb-2">
+                                        <a class="btn btn--primary"
+                                           href="{% url 'blog:detail' pk=object.get_next.pk %}">
+                                            <span class="btn__arrow btn__arrow--next"></span>
+                                            <span class="btn__text btn__text--next">Next posts</span>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+
+                        <div id="comments" class="comments-container">
+                            <div class="comment-title">
+                                <h5>Comments(03)</h5>
+                            </div>
+                            <ol class="comment-list">
+                                {% for comment in object.get_comments %}
+                                    <li class="comment">
+                                        <div class="the-comment">
+                                        <span class="author__avatar">
+                                            <img alt="" src="{% static 'img/commet-1.png' %}">
+                                        </span>
+                                            <aside class="comment-main">
+                                                <div class="comment__header">
+                                                    <div class="author__name">
+                                                        <h5>{{ comment.name }}</h5>
+                                                        <span class="meta">{{ comment.created_at|date:'d m Y' }}</span>
+                                                    </div>
+                                                    <a class="comment-reply-link" href="#">Reply</a>
+                                                </div>
+                                                <div class="comment__text">
+                                                    <p>{{ comment.comment }}</p>
+                                                </div>
+                                            </aside>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ol>
+                        </div>
+                        <div id="respond" class="comment-respond">
+                            <div class="comment-respond-title">
+
+                                <h5 class="comment-reply-title font-size-24 mb-5 pt-3">Leave a Comment</h5>
+                            </div>
+
+
+                            <form method="POST" class="form comment-form">
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <div class="form-group col-12 col-lg-6">
+                                        <input name="name" type="text" class="form-control" id="name"
+                                               placeholder="Your Name">
+                                    </div>
+                                    <div class="form-group col-12 col-lg-6">
+                                        <input name="email" type="email" class="form-control" id="email"
+                                               placeholder="Your Email">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-12">
+                                        <input name="website" type="text" class="form-control" id="yourWebsite"
+                                               placeholder="Enter Website">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-12">
+                                        <textarea name="comment" class="form-control" id="message" rows="8"
+                                                  placeholder="Write Message">
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-12">
+                                        <button type="submit" class="btn btn--sm btn--primary btn--megaEffect">SEND
+                                            MESSAGE
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

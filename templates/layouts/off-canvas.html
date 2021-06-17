@@ -1,0 +1,47 @@
+{% load static %}
+<div>
+    <div class="navigations-sidebar">
+            <span class="logo-holder">
+                <img src="{% static 'img/brand-logo.png' %}" alt="brand-logo">
+            </span>
+
+        <button class="offcanvas-toggler action action--open" aria-label="Open Menu">
+            <span class="offcanvas-toggler-icon"></span>
+        </button>
+
+        <button class="navbar-toggler" type="button" data-toggle="navbarToggler" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="navigations-connect">
+            <ul>
+                <li><a href="#"><i class="ft ft-facebook"></i></a></li>
+                <li><a href="#"><i class="ft ft-twitter"></i></a></li>
+                <li><a href="#"><i class="ft ft-linkedin"></i></a></li>
+                <li><a href="#"><i class="ft ft-instagram"></i></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="offcanvas-menu">
+        <div class="overlay">
+            <img class="background-image-holder" src="{% static 'img/overlay.png' %}" alt="overlay">
+        </div>
+        <nav id="ml-menu" class="menu">
+            <div class="menu__wrap">
+                <ul data-menu="main" class="menu__level" tabindex="-1" role="menu" aria-label="All">
+                    <li class="menu__item" role="menuitem">
+                        <a class="menu__link" href="#">Full Information</a>
+                    </li>
+                    <li class="menu__item" role="menuitem">
+                        <a class="menu__link" href="#">My Wins</a>
+                    </li>
+                    <li class="menu__item" role="menuitem">
+                        <a class="menu__link" href="{% url 'courses:list' %}">Courses</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<header class="navbar navbar-expand-lg navbar-dark position-fixed">
+    <div class="container">
+        <div class="navbar-inner">
+            <nav class="flex-row d-lg-flex justify-content-lg-end align-items-lg-center">
+                <ul class="navbar-nav" id="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link " href="{% url 'home:home' %}" aria-haspopup="true"
+                           aria-expanded="false">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about:about' %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'portfolio:list' %}">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog:list' %}">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'service:service' %}">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact:contact' %}">Contact</a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <span class="site-language">
+        <ul>
+            <li><a href="#">ENG</a></li>
+            <li><a href="#">UZ</a></li>
+            <li><a href="#">RU</a></li>
+        </ul>
+        </span>
+</header>

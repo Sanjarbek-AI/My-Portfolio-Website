@@ -1,0 +1,99 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="main-wrapper">
+        <section class="page-header d-flex align-items-center justify-content-center ">
+            <div class="bg-image">
+                <img class="background-image-holder" src="{% static 'img/page-header.jpg' %}" alt="overlay">
+            </div>
+            <div class="overlay overlay-dark-bg-1"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-9 mx-auto">
+                        <div class="content background-dark d-flex align-items-start flex-column"
+                             data-overlay-text="Portfolio">
+                            <div class="bg-image">
+                                <img class="background-image-holder" src="{% static 'img/diagonal-line-pattern.png' %}"
+                                     alt="overlay">
+
+                            </div>
+                            <h2><span>Featured </span> Work</h2>
+                            <p> website refers to a central location that contains more than one web page or a series of
+                                web pages.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="filter-button-group button-group">
+                            <button class="button is-checked" data-filter="*">show all</button>
+                            <button class="button" data-filter=".illustration">Illustration</button>
+                            <button class="button" data-filter=".branding">Branding</button>
+                            <button class="button" data-filter=".web-design">Web Design</button>
+                            <button class="button" data-filter=".design">Design</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="works masonry">
+                            {% for object in object_list %}
+                                <li class="works-item masonry-item all illustration">
+                                    <div class="masonry-image">
+                                        <a {% url 'portfolio:detail' pk=object.pk %}
+                                                class="works__thumb-action lightbox"
+                                                data-gall="portfolio-gall"
+                                                href="{{ object.image.url }}">
+                                            <i class="ft ft-image"></i>
+                                        </a>
+                                        <div class="masonry-image__thumb">
+                                            <img src="{{ object.image.url }}"
+                                                 class="background-image-holder" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="works-meta">
+                                        <div class="works__category">
+                                            <span>{{ object.title }}</span>
+                                        </div>
+                                        <a href="{% url 'portfolio:detail' pk=object.pk %}"
+                                           class="works__title">{{ object.name }}</a>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== End of Portfolio ============ -->
+
+        <!-- =========== Start of CTA ============ -->
+        <section class="position-relative pt-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="cta background-dark">
+                            <div class="cta-inner overlay--pattern">
+                                <img src="{% static 'img/diagonal-line-pattern.png' %}" alt="overlay"
+                                     class="background-image-holder">
+                                <h6>Have any Project in Mind ? <a href="mailto:">JUST SAY HELLO</a></h6>
+                                <a href="#" class="btn btn--primary btn--lg btn--megaEffect">
+                                    Hire Me
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta property="og:image" content="#"/>
+
+    <title>Home</title>
+
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,600,700,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/plugins.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+
+<body class="home" data-spy="scroll" data-target="#navbar-nav">
+
+{% include 'layouts/pre-loader.html' %}
+
+{% include 'layouts/header.html' %}
+
+{% include 'layouts/off-canvas.html' %}
+
+<!-- =========== Start of main-wrapper ============ -->
+<div class="main-wrapper">
+    {% include 'layouts/home-slider.html' %}
+
+    {% include 'layouts/who-am-i.html' %}
+
+    <section class="facts" data-scrollax-parent="true">
+        <div class="bg-image" data-scrollax="properties: { 'background-position-y': '-100%'}"><img
+                class="background-image-holder" src="{% static 'img/facts.jpg' %}" alt="background-image"></div>
+        <div class="overlay">
+            <img class="background-image-holder" src="{% static 'img/overlay.png' %}" alt="overlay">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="facts-inner background-dark" data-scrollax="properties: { 'translateY': '20%'}">
+                        <div class="section-title">
+                                <span class="title-overlay" data-scrollax="properties: { translateY: '-250px' }">
+                                    Fun facts
+                                </span>
+                            <h3 class="section-title__main">Lets See Some <br> Fun facts About me</h3>
+                            <p class="section-title__description">Over 2 Years Experiences i am work with business &
+                                provide solution to client with their business problem</p>
+                        </div>
+                        <ul class="facts-items">
+                            {% for fact in facts %}
+                                <li class="fact">
+                                    <i class="icon"></i>
+                                    <span class="fact__title">{{ fact.title }}</span>
+                                    <span class="fact__value" data-value="{{ fact.number }}">00</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    {% include 'layouts/work.html' %}
+
+    {% include 'layouts/skills.html' %}
+
+    <section class="testimonial" data-scrollax-parent="true">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                            <span class="title-overlay" data-scrollax="properties: { translateY: '-200px' }">
+                                Testimonials
+                            </span>
+                        <h3 class="section-title__main">Testimonials</h3>
+                        <p class="section-title__description">Over 10 Years Expericences i am work with business &
+                            provide
+                            solution to client with their business problem</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            {% for testimonial in testimonials %}
+                                <div class="swiper-slide">
+                                    <div class="testimonial-content card">
+                                        <blockquote>
+                                            {{ testimonial.feedback }}
+                                        </blockquote>
+                                        <div class="testimonial-info">
+                                            <div class="testimonial-customer">
+                                        <span class="testimonial__avatar"><img src="{{ testimonial.image.url }}"
+                                                                               alt="testimonial"></span>
+                                                <div class="testimonial-avatar-info">
+                                                    <h6>{{ testimonial.name }}</h6>
+                                                    <span>{{ testimonial.job }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="testimonial-rating">
+                                                <i class="icon ti-star active"></i>
+                                                <i class="icon ti-star active"></i>
+                                                <i class="icon ti-star active"></i>
+                                                <i class="icon ti-star"></i>
+                                                <i class="icon ti-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include 'layouts/clients.html' %}
+    <section class="space-bottom--sm position-relative">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="clients swiper-container">
+                        <div class="swiper-wrapper">
+                            {% for client in clients %}
+                                <div class="swiper-slide">
+                                    <img src="{{ client.image.url }}" alt="client">
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include 'layouts/footer.html' %}
+
+</div>
+
+
+<script src="{% static 'js/plugins.min.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLFomDOPKqvvITt7tv_hZG0PDlWB2-q0g"></script>
+<script src="{% static 'js/app.js' %}"></script>
+
+</body>
+</html>

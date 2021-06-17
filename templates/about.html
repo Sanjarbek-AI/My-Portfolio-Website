@@ -1,0 +1,177 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="main-wrapper">
+        <section class="page-header d-flex align-items-center justify-content-center ">
+            <div class="bg-image">
+                <img class="background-image-holder" src="{% static 'img/page-header.jpg' %}" alt="overlay">
+            </div>
+            <div class="overlay overlay-dark-bg-1"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-9 mx-auto">
+                        <div class="content background-dark d-flex align-items-start flex-column"
+                             data-overlay-text="About">
+                            <div class="bg-image">
+                                <img class="background-image-holder" src="{% static 'img/diagonal-line-pattern.png' %}"
+                                     alt="overlay">
+
+                            </div>
+                            <h2><span>About </span>&ensp;Me/US</h2>
+                            <p> website refers to a central location that contains more than one web page or a series of
+                                web
+                                pages.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="story pb-0" id="story" data-scrollax-parent="true">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 text-center text-sm-left">
+                        <div class="story-img-block">
+                            <div class="title-overlay title-overlay--vertical"
+                                 data-scrollax="properties: { 'margin-top': '-100%'}">About
+                            </div>
+                            <picture class="story__img">
+                                <img src="{% static 'img/about-profile.png' %}" alt="image">
+                            </picture>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="story-details">
+                            <span class="story__mini-title">WHO AM I?</span>
+                            <h3>Passionate with Coding <br> Mostly AI/WEB and Application backend</h3>
+                            <p>I am a Back-End Developer and Junior AI developer based in Tashkent. I am director and
+                                CEO at
+                                TAXI company. I am a dreamer and a fanatic of all digital things. I have
+                                a few years of experience in consulting in
+                                all areas of digital. I love coding AI machines. I am also do professional carpentry.
+                            </p>
+                            <a href="#" class="btn btn--primary btn--sm btn--megaEffect">
+                                Download CV </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services" id="services">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-12">
+                        <div class="card service">
+                            <i class="icon ti-paint-bucket"></i>
+                            <div class="service__body">
+                                <a href="#">
+                                    <h5>Website Backend</h5>
+                                </a>
+                                <p>I have a a few years experience doing it and also I know a little bit about
+                                    CSS/JS/HTML.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12">
+                        <div class="card service">
+                            <i class="icon ti-vector"></i>
+                            <div class="service__body">
+                                <a href="#">
+                                    <h5>WEB APP DESIGN</h5>
+                                </a>
+                                <p>I really like to disign web application, that's why I learned it and I am doing it.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12">
+                        <div class="card service">
+                            <i class="icon ti-camera"></i>
+                            <div class="service__body">
+                                <a href="#">
+                                    <h5>Junior AI developer</h5>
+                                </a>
+                                <p>I am really passioned about coding AI machines and application and I do a lot it.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="facts" data-scrollax-parent="true">
+            <div class="bg-image" data-scrollax="properties: { 'background-position-y': '-100%'}"><img
+                    class="background-image-holder" src="{% static 'img/facts.jpg' %}" alt="background-image"></div>
+            <div class="overlay">
+                <img class="background-image-holder" src="{% static 'img/overlay.png' %}" alt="overlay">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="facts-inner background-dark" data-scrollax="properties: { 'translateY': '20%'}">
+                            <div class="section-title">
+                                <span class="title-overlay" data-scrollax="properties: { translateY: '-250px' }">
+                                    Fun facts
+                                </span>
+                                <h3 class="section-title__main">Lets See Some <br> Fun facts About me</h3>
+                                <p class="section-title__description">Over 2 Years Experiences i am work with business &
+                                    provide solution to client with their business problem</p>
+                            </div>
+                            <ul class="facts-items">
+                                {% for fact in facts %}
+                                    <li class="fact">
+                                        <i class="icon"></i>
+                                        <span class="fact__title">{{ fact.title }}</span>
+                                        <span class="fact__value" data-value="{{ fact.number }}">00</span>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section data-scrollax-parent="true">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <span class="title-overlay" data-scrollax="properties: { 'translateY': '20%'}"> Team Member
+                            </span>
+                            <h3 class="section-title__main">Our Team Member</h3>
+                            <p class="section-title__description">Over 10 Years Expericences i am work with business &
+                                provide solution to client with their business problem</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for member in team %}
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
+                            <div class="team-mamber text-center">
+                                <div class="team-mamber__avatar mb-4 mb-md-5">
+                                    <img src="{{ member.image.url }}" alt="team-mamber">
+                                    <ul class="team-mamber__connect">
+                                        <li><a href="#"><i class="ft ft-facebook"></i></a></li>
+                                        <li><a href="#"><i class="ft ft-twitter"></i></a></li>
+                                        <li><a href="#"><i class="ft ft-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="ft ft-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-size-24">{{ member.name }}</h5>
+                                    <span class="font-size-12 text-uppercase">{{ member.job }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

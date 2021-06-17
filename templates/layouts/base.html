@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta property="og:image" content="#"/>
+
+    <title>Home</title>
+
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,600,700,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/plugins.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+
+<body class="home" data-spy="scroll" data-target="#navbar-nav">
+
+{% include 'layouts/pre-loader.html' %}
+
+{% include 'layouts/header.html' %}
+
+{% include 'layouts/off-canvas.html' %}
+
+{% block content %}{% endblock %}
+
+{% include 'layouts/footer.html' %}
+
+
+<script src="{% static 'js/plugins.min.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLFomDOPKqvvITt7tv_hZG0PDlWB2-q0g"></script>
+<script src="{% static 'js/app.js' %}"></script>
+
+</body>
+</html>

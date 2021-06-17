@@ -1,0 +1,152 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="main-wrapper">
+        <section class="page-header d-flex align-items-center justify-content-center ">
+            <div class="bg-image">
+                <img class="background-image-holder" src="{% static 'img/page-header.jpg' %}" alt="overlay">
+            </div>
+            <div class="overlay overlay-dark-bg-1"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-9 mx-auto">
+                        <div class="content background-dark d-flex align-items-start flex-column"
+                             data-overlay-text="Blog Post">
+                            <div class="bg-image">
+                                <img class="background-image-holder" src="{% static 'img/diagonal-line-pattern.png' %}"
+                                     alt="overlay">
+
+                            </div>
+                            <h2><span>Popular </span>&ensp;Blog</h2>
+                            <p> website refers to a central location that contains more than one web page or a series of
+                                web
+                                pages.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        {% for object in object_list %}
+            <section class="blog-main">
+                <div class="container">
+                    <div class="row">
+                            <aside class="col-12 col-lg-4">
+                                <div class="sidebar">
+                                    <div class="sidebar__widget">
+                                        <div class="widget__title bg-white">
+                                            <h5>Search Post</h5>
+                                        </div>
+                                        <div class="widget-body pt-0">
+                                            <form class="form">
+                                                <div class="form-group">
+                                                    <input value="{{ request.GET.q }}" class="form-control" type="text" name="q"
+                                                           placeholder="Search with title ...">
+                                                    <button type="submit" class="btn--dark form-submit form-submit--search"><i
+                                                            class="icon ti-search"></i></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="sidebar__widget">
+                                        <div class="widget__title">
+                                            <h5>About {{ object.author.name }}</h5>
+                                        </div>
+                                        <img src="{% static 'img/author-pic.png' %}" alt="author image">
+                                        <div class="widget-body text-center">
+                                            <h4 class="font-weight-normal">Hi,</h4>
+                                            <p class="mb-5">{{ object.author.description }}</p>
+                                            <ul class="social-connet justify-content-center">
+                                                <li><a href="#"><i class="ft ft-facebook"></i></a></li>
+                                                <li><a href="#"><i class="ft ft-twitter"></i></a></li>
+                                                <li><a href="#"><i class="ft ft-linkedin"></i></a></li>
+                                                <li><a href="#"><i class="ft ft-instagram"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="sidebar__widget">
+                                        <div class="widget__title">
+                                            <h5>Recent News</h5>
+                                        </div>
+                                        <div class="widget-body recent-news">
+                                            <ul>
+                                                {% for blog in recent_blogs %}
+                                                    <li>
+                                                        <a href="#">{{ blog.title }}</a>
+                                                        <div class="meta">
+                                                            <span>By: {{ blog.author.name }}</span>
+                                                            <span>{{ blog.created_at|date:'d m. Y' }}</span>
+                                                        </div>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </aside>
+                        <div class="col-12 col-lg-8">
+                            <div class="content">
+                                    <article class="article-body">
+                                        <ul class="article__meta">
+                                            <li>
+                                                <h6 class="font-size-12"><span
+                                                        class="bullet">•</span>{{ object.created_at|date:'m d Y' }}</h6>
+                                            </li>
+                                            <li>
+                                                <h6 class="font-size-12 meta-title">TAGS:</h6>
+                                                <h6 class="font-size-12">
+                                                    {% for tag in object.tags.all %}
+                                                        <a href="{% url 'blog:list' %}?tag={{ tag.title }}">{{ tag }}</a>
+                                                    {% endfor %}
+                                                </h6>
+                                            </li>
+                                        </ul>
+                                        <a href="#" class="article__thumb"><img src="{{ object.image.url }}"
+                                                                                alt="article__thumb"></a>
+                                        <ul class="article__meta mb-4 mt-2">
+                                            <li><img class="avatar" src="{% static 'img/blog-avatar.png' %}"
+                                                     alt="avatar">
+                                                <h6 class="font-size-12">By: {{ object.author.name }}</h6>
+                                            </li>
+                                            <li>
+                                                <h6 class="font-size-12">25 Comments</h6>
+                                            </li>
+                                            <li>
+                                                <h6 class="font-size-12">1.5k Likes</h6>
+                                            </li>
+                                        </ul>
+                                        <a href="#">
+                                            <h4>{{ object.title }}</h4>
+                                        </a>
+
+                                        <p>{{ object.short_description }}</p>
+                                        <a href="{% url 'blog:detail' pk=object.pk %}" class="btn btn--primary btn--lg btn--megaEffect">READ MORE</a>
+                                    </article>
+                            </div>
+                            <nav>
+                                <ul class="pagination d-flex justify-content-between pt-4 mb-0 flex-wrap">
+                                    <li class="pagination-item mb-2">
+                                        {% if page_obj.has_previous %}
+                                            <a class="btn btn--dark" href="?page={{ page_obj.previous_page_number }}">
+                                                <span class="btn__text btn__text--prev">Prev posts</span>
+                                                <span class="btn__arrow btn__arrow--prev"></span></a>
+                                        {% endif %}
+                                    </li>
+                                    <li class="pagination-item mb-2">
+                                        {% if page_obj.has_next %}
+                                            <a class="btn btn--dark" href="?page={{ page_obj.next_page_number }}">
+                                                <span class="btn__arrow btn__arrow--next"></span>
+                                                <span class="btn__text btn__text--next">Next posts</span>
+                                            </a>
+                                        {% endif %}
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endfor %}
+    </div>
+{% endblock %}

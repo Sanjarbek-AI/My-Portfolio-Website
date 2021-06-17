@@ -1,0 +1,151 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="main-wrapper">
+        <section class="page-header d-flex align-items-center justify-content-center ">
+            <div class="bg-image">
+                <img class="background-image-holder" src="{% static 'img/page-header.jpg' %}" alt="overlay">
+            </div>
+            <div class="overlay overlay-dark-bg-1"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-9 mx-auto">
+                        <div class="content background-dark d-flex align-items-start flex-column"
+                             data-overlay-text="Portfolio">
+                            <div class="bg-image">
+                                <img class="background-image-holder" src="{% static 'img/diagonal-line-pattern.png' %}"
+                                     alt="overlay">
+                            </div>
+                            <h2><span>Portfolio </span> Details</h2>
+                            <p> website refers to a central location that contains more than one web page or a series of
+                                web pages.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- =========== End of Page Header ============ -->
+
+        <!-- =========== Start of Portfolio ============ -->
+        <section>
+            <div class="container">
+                <div class="row mb-5 pb-4">
+                    <div class="col-12 col-lg-5 mb-4 mb-lg-0">
+                        <div class="mb-5 pb-3">
+                            <span class="font-size-12 mb-3 ml-3 font-w-600 bullet">INFORMATIONS</span>
+                            <h4 class="font-size-24 mb-4">{{ object.full_title }}</h4>
+                            <p>{{ object.description|safe }}</p>
+                        </div>
+
+                        <ul class="project-info">
+                            <li>
+                                <span class="title">Date</span>
+                                <span class="value">{{ object.created_at|date:'d m Y' }}</span>
+                            </li>
+                            <li>
+                                <span class="title">CLIENT:</span>
+                                <span class="value">Rasel Ornald</span>
+                            </li>
+                            <li>
+                                <span class="title">CATEGORY:</span>
+                                <span class="value">Web Design and Development</span>
+                            </li>
+                            <li>
+                                <span class="title">WEBSITE:</span>
+                                <span class="value"><a href="#">themeforest.net</a></span>
+                            </li>
+                            <li>
+                                <span class="title">Location:</span>
+                                <span class="value">New York</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-lg-7">
+                        <img src="{% static 'img/case-study-3.png' %}" alt="case-study-img">
+                    </div>
+                </div>
+
+                <div class="row mb-5 pb-4">
+                    <div class="col-12 col-lg-7 text-center mx-auto">
+                        <div class="d-inline-block mb-3">
+                            <span class="bullet font-w-600 bullet text-left">SOLUTIONS</span>
+                        </div>
+                        <p>{{ object.solution|safe }}</p>
+
+
+                    </div>
+                </div>
+                <div class="row mb-5 pb-5">
+                    <div class="col-12">
+                        <div class="swiper-container image-carousel">
+                            <div class="swiper-wrapper">
+                                {% for image in object.images.all %}
+                                    <div class="swiper-slide">
+                                        <img src="{{ image.image.url }}" alt="carousel-img">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <!-- Add Pagination -->
+                            <div class="swiper-pagination swiper-pagination--custom"></div>
+                            <!-- Add Arrows -->
+                            <div class="swiper-navigation">
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="pagination d-flex justify-content-between mb-0 flex-wrap">
+                            <li class="pagination-item mb-2 mb-2">
+                                {% if object.get_prev %}
+                                    <a class="btn btn--primary"
+                                       href="{% url 'portfolio:detail' pk=object.get_prev.pk %}">
+                                        <span class="btn__text btn__text--prev">Prev posts</span>
+                                    </a>
+                                {% endif %}
+                            </li>
+                            <li>
+                                <ul class="social-connet social-connet--borderless">
+                                    <li><a href="#"><i class="ft ft-twitter"></i></a></li>
+                                    <li><a href="#"><i class="ft ft-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="ft ft-instagram"></i></a></li>
+                                    <li><a href="#"><i class="ft ft-instagram"></i></a></li>
+                                </ul>
+                            </li>
+                            <li class="pagination-item mb-2">
+                                {% if object.get_next %}
+                                    <a class="btn btn--primary"
+                                       href="{% url 'portfolio:detail' pk=object.get_next.pk %}">
+                                        <span class="btn__text btn__text--next">Next posts</span>
+                                    </a>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="position-relative pt-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="cta background-dark">
+                            <div class="cta-inner overlay--pattern">
+                                <img src="img/diagonal-line-pattern.png" alt="overlay" class="background-image-holder">
+                                <h6>Have any Project in Mind ? <a href="mailto:">JUST SAY HELLO</a></h6>
+                                <a href="#" class="btn btn--primary btn--lg btn--megaEffect">
+                                    Hire Me
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

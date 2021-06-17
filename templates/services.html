@@ -1,0 +1,202 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="main-wrapper">
+        <section class="page-header d-flex align-items-center justify-content-center ">
+            <div class="bg-image">
+                <img class="background-image-holder" src="{% static 'img/page-header.jpg' %}" alt="overlay">
+            </div>
+            <div class="overlay overlay-dark-bg-1"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-9 mx-auto">
+                        <div class="content background-dark d-flex align-items-start flex-column"
+                             data-overlay-text="Services">
+                            <div class="bg-image">
+                                <img class="background-image-holder" src="{% static 'img/diagonal-line-pattern.png' %}"
+                                     alt="overlay">
+
+                            </div>
+                            <h2><span>Popular</span> Services</h2>
+                            <p> Welcome to the service page of my portfolio website. Here you can find the sinformation
+                                about all of service. Good Luck !
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services" id="services">
+            <div class="container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-9 col-12">
+                            <div class="content d-flex flex-column flex-lg-row align-items-center align-items-lg-stretch">
+                                <img src="{% static 'img/ui-ux-desgin.png' %}" alt="">
+                                <div class="card service">
+                                    <div class="rect rect--topLeft"></div>
+                                    <div class="rect rect--bottomRight"></div>
+                                    <i class="icon ti-paint-bucket"></i>
+                                    <div class="service__body">
+                                        <a href="#">
+                                            <h5>UI UX Design</h5>
+                                        </a>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sedo eiusmod tempor
+                                            incididunt ut labore et dolore magna aliquati enim ad minim.</p>
+                                        <div class="skill">
+                                            <span>DESIGN</span><span>sketch </span><span>implementation</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-9 col-12 mt-5">
+                            <div class="content d-flex flex-column flex-lg-row align-items-center align-items-lg-stretch">
+                                <img src="{% static 'img/web-development.png' %}" alt="">
+                                <div class="card service">
+                                    <div class="rect rect--topLeft"></div>
+                                    <div class="rect rect--bottomRight"></div>
+                                    <i class="icon ti-vector"></i>
+                                    <div class="service__body">
+                                        <a href="#">
+                                            <h5>Web Development</h5>
+                                        </a>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sedo eiusmod tempor
+                                            incididunt ut labore et dolore magna aliquati enim ad minim.</p>
+                                        <div class="skill">
+                                            <span>DESIGN</span><span>sketch </span><span>implementation</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-9 col-12">
+                            <div class="content d-flex flex-column flex-lg-row align-items-center align-items-lg-stretch">
+                                <img src="{% static 'img/ecommerce.png' %}" alt="">
+                                <div class="card service">
+                                    <div class="rect rect--topLeft"></div>
+                                    <div class="rect rect--bottomRight"></div>
+                                    <i class="icon ti-bag"></i>
+                                    <div class="service__body">
+                                        <a href="#">
+                                            <h5>E Commerce Solution</h5>
+                                        </a>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sedo eiusmod tempor
+                                            incididunt ut labore et dolore magna aliquati enim ad minim.</p>
+                                        <div class="skill">
+                                            <span>DESIGN</span><span>sketch </span><span>implementation</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-9 col-12">
+                            <div class="content d-flex flex-column flex-lg-row align-items-center align-items-lg-stretch">
+                                <img src="{% static 'img/ios-app.png' %}" alt="">
+                                <div class="card service">
+                                    <div class="rect rect--topLeft"></div>
+                                    <div class="rect rect--bottomRight"></div>
+                                    <i class="icon ti-layers-alt"></i>
+                                    <div class="service__body">
+                                        <a href="#">
+                                            <h5>iOS App Development</h5>
+                                        </a>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sedo eiusmod tempor
+                                            incididunt ut labore et dolore magna aliquati enim ad minim.</p>
+                                        <div class="skill">
+                                            <span>DESIGN</span><span>sketch </span><span>implementation</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section class="background-dark pb-xl-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="process-content">
+
+                            <h2>Have a Look at <br> My Working Process</h2>
+                            <p>Behance is a top leading most popular portfolio site for growing lalented designer orem
+                                ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                                labore design.</p>
+                            <div class="process-button-group">
+                                <a href="{% url 'portfolio:list' %}" class="btn btn--primary btn--megaEffect">
+                                    See Works
+                                </a>
+                                <span class="process-play-btn">
+                                    <a href="https://www.youtube.com/watch?v=e9p4Epkqv0k" class="process__play"
+                                       data-autoplay="true"
+                                       data-vbtype="video"><i class="ft ft-play"></i></a>Watch Me
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-12 offset-lg-1">
+                        <picture class="process__img">
+                            <img src="{% static 'img/process.png' %}" alt="process">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="" data-scrollax-parent="true">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex flex-column flex-lg-row justify-content-between">
+                            <div class="section-title">
+                                <span class="title-overlay" data-scrollax="properties: { translateY: '-200px' }">
+                                    Pricing
+                                </span>
+                                <h3 class="section-title__main">Pricing Plan</h3>
+                                <p class="section-title__description">Over 10 Years Expericences i am work with business
+                                    & provide solution to client with their business problem</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for service in services %}
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="pricing-table individual text-center">
+                                <div class="header d-flex">
+                                    <div class="validity">
+                                        <div class="price price--monthly-active">
+                                            <span class="currency"> $</span>
+                                            <div class="value">
+                                                <div class="value-monthly">
+                                                    <span class="number">{{ service.price }}</span>
+                                                    <span class="duration">{{ service.time.title }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="package-name d-flex flex-column">
+                                        <span class="title">{{ service.position }}</span>
+                                        <span class="tagline">{{ service.best_for }}</span>
+                                    </div>
+                                </div>
+                                <p>{{ service.benefits|safe }}</p>
+                                <a href="{% url 'contact:contact' %}#contact">
+                                    <button type="button" class="btn btn--primary btn--lg btn--megaEffect">GET START
+                                        NOW
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% include 'layouts/hire-me.html' %}
+    </div>
+{% endblock %}
